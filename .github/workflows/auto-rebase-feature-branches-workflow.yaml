@@ -1,0 +1,23 @@
+name: Automatic Rebase for Feature Branches
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    shell: bash
+    working-directory: scripts
+
+jobs:
+  rebase:
+    name: Rebase
+    steps: 
+    - id: do
+      name: Find feature branches and rebase
+      run: rebase-feature-branches.sh
+
+                    
+ 
+
