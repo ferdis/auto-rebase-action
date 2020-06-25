@@ -13,8 +13,8 @@ defaults:
 jobs:
   rebase:
     name: Rebase
-    steps: 
     runs-on: ubuntu-latest
+    steps: 
     - id: do
       name: Find feature branches and rebase
       run: rebase-feature-branches.sh
