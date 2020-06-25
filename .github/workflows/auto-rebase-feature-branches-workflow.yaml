@@ -21,7 +21,8 @@ jobs:
         git fetch origin
         for branch in $(git branch --all --list '*feature*' | cut -d'/' -f3); do
             git checkout $branch
-            git rebase --stat origin/master &&
+            git pull --ff
+            git rebase origin/master &&
                 git push origin HEAD:$branch -f || 
                 git rebase --abort
         done
