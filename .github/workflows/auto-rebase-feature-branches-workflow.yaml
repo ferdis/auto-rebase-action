@@ -15,8 +15,9 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
-      fetch-depth: 0
-      ref: master
+      with:
+        fetch-depth: 0
+        ref: master
     - id: do
       name: Loop over branches and try to rebase feature branches
       run: |
