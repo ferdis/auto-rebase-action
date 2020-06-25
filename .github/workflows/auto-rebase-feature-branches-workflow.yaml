@@ -15,9 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     - id: ls
+      uses: actions/checkout@v2
       name: ls
       run: find .
     - id: do
+      uses: actions/checkout@v2
       name: Find feature branches and rebase
       run: scripts/rebase-feature-branches.sh
 
