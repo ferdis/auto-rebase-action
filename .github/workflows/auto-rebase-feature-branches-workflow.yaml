@@ -8,12 +8,15 @@ on:
 defaults:
   run:
     shell: bash
-    working-directory: scripts
 
 jobs:
   rebase:
     name: Rebase
     runs-on: ubuntu-latest
+    steps: 
+    - id: ls
+      name: ls
+      run: find .
     steps: 
     - id: do
       name: Find feature branches and rebase
