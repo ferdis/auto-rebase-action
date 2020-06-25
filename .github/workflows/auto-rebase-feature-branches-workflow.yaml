@@ -11,17 +11,22 @@ defaults:
 
 jobs:
   rebase:
-    name: Rebase
+    name: Rebase feature branches
     runs-on: ubuntu-latest
     steps: 
     - uses: actions/checkout@v2
-    - id: ls
-      name: ls
-      run: find .
     - id: do
-      name: Find feature branches and rebase
-      run: scripts/rebase-feature-branches.sh
+      name: Loop over branches and try to rebase feature branches
+      run: |
+        git fetch origin
+        for branch in $(git branch --all --list '*feature*' | cut -d'/' -f3); do
+            git checkout $branch
+            git rebase --stat origin/master &&
+                git push origin HEAD:$branch -f || 
+                git rebase --abort
+        done
 
-                    
- 
+
+                            
+         
 
